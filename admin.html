@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing & Leads — Ateliê dos Fios</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧵</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --terracotta: #C0583E;
+      --terracotta-dark: #983F28;
+      --sage: #50705E;
+      --sand: #D4A373;
+      --bg: #F7F3ED;
+      --card-bg: #FFFFFF;
+      --text: #221813;
+      --muted: #746358;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 24px 16px;
+      line-height: 1.5;
+    }
+    .admin-container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(192, 88, 62, 0.2);
+    }
+    .admin-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--text);
+    }
+    .admin-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      text-decoration: none;
+      border: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--terracotta);
+      color: #FFF;
+    }
+    .btn-primary:hover {
+      background: var(--terracotta-dark);
+    }
+    .btn-secondary {
+      background: #FFF;
+      color: var(--text);
+      border: 1px solid #CCC;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(45,35,30,0.06);
+      border: 1px solid rgba(192, 88, 62, 0.12);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .stat-val {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--terracotta);
+      margin-top: 4px;
+    }
+    .card-section {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 6px 20px rgba(45,35,30,0.06);
+      border: 1px solid rgba(192, 88, 62, 0.12);
+      margin-bottom: 24px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      margin-bottom: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .progress-bar-bg {
+      background: #EEE;
+      height: 12px;
+      border-radius: 6px;
+      overflow: hidden;
+      margin: 6px 0 14px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--terracotta);
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid #EFEAE3;
+    }
+    th {
+      background: #FAF6F0;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+    .badge-ref { background: #EBF3EE; color: #374D40; }
+    .badge-rend { background: #FDF2EE; color: #983F28; }
+    .badge-pres { background: #F9EFEF; color: #8A4E46; }
+    .badge-dec { background: #FDF6EC; color: #8C5F30; }
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid #EFEAE3;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <header>
+      <div>
+        <h1 class="admin-title">🧵 Painel de Marketing — Ateliê dos Fios</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Inteligência de Leads, Pesquisa Q6 e Cruzamento de Perfis</p>
+      </div>
+      <div class="admin-actions">
+        <a href="/" class="btn btn-secondary">← Ver Quiz</a>
+        <a href="/api/leads/export.csv" class="btn btn-primary" download>📥 Exportar Leads (CSV)</a>
+      </div>
+    </header>
+
+    <!-- Indicadores Topo -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total de Leads Capturados</div>
+        <div class="stat-val" id="stat-total-leads">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Perfil Mais Frequente</div>
+        <div class="stat-val" id="stat-top-profile">-</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Motivador Q6 Líder</div>
+        <div class="stat-val" id="stat-top-motivator">-</div>
+      </div>
+    </div>
+
+    <!-- DADO MAIS IMPORTANTE: Q6 Breakdown -->
+    <div class="card-section">
+      <h2 class="section-title">
+        <span>🎯 Motivador Principal de Entrada (Q6 Breakdown)</span>
+      </h2>
+      <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.92rem;">
+        Percentual de leads por motivação para direcionamento de criativos, campanhas e WhatsApp:
+      </p>
+      <div id="q6-breakdown-container">
+        <!-- Renderizado via JS -->
+      </div>
+    </div>
+
+    <!-- MATRIZ CRUZADA: Perfil + Motivador -->
+    <div class="card-section">
+      <h2 class="section-title">
+        <span>📊 Matriz Cruzada: Perfil + Motivador</span>
+      </h2>
+      <p style="color: var(--muted); margin-bottom: 16px; font-size: 0.92rem;">
+        Cruzamento de dados para segmentação refinada de mensagens (ex: REF + RELAXAMENTO, REND + LUCRO):
+      </p>
+      <div class="table-wrapper">
+        <table id="matrix-table">
+          <thead>
+            <tr>
+              <th>Perfil</th>
+              <th>Facilidade (A)</th>
+              <th>Suporte (B)</th>
+              <th>Lucro (C)</th>
+              <th>Relaxamento (D)</th>
+              <th>Total do Perfil</th>
+            </tr>
+          </thead>
+          <tbody id="matrix-tbody">
+            <!-- Renderizado via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tabela de Leads Recentes -->
+    <div class="card-section">
+      <h2 class="section-title">
+        <span>👥 Últimos Leads Cadastrados</span>
+      </h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Contato</th>
+              <th>Tipo</th>
+              <th>Perfil</th>
+              <th>Kit / Oferta</th>
+              <th>Valor</th>
+              <th>Q6 (Motivador)</th>
+              <th>Experiência</th>
+              <th>UTM Source</th>
+              <th>Data/Hora</th>
+            </tr>
+          </thead>
+          <tbody id="leads-tbody">
+            <!-- Renderizado via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    async function loadAdminData() {
+      try {
+        const [metricsRes, leadsRes] = await Promise.all([
+          fetch('/api/admin/metrics'),
+          fetch('/api/leads?limit=50')
+        ]);
+
+        const metrics = await metricsRes.json();
+        const leads = await leadsRes.json();
+
+        // 1. Top Stats
+        document.getElementById('stat-total-leads').textContent = metrics.totalLeads || 0;
+
+        // Top Profile
+        let topP = '-';
+        let maxP = -1;
+        for (const [p, cnt] of Object.entries(metrics.profiles || {})) {
+          if (cnt > maxP) { maxP = cnt; topP = p; }
+        }
+        document.getElementById('stat-top-profile').textContent = maxP > 0 ? topP : '-';
+
+        // Top Motivator
+        let topM = '-';
+        let maxM = -1;
+        for (const [m, data] of Object.entries(metrics.q6Breakdown || {})) {
+          if (data.count > maxM) { maxM = data.count; topM = m; }
+        }
+        document.getElementById('stat-top-motivator').textContent = maxM > 0 ? topM : '-';
+
+        // 2. Q6 Breakdown
+        const q6Labels = {
+          FACILIDADE: '✨ Facilidade (Dá pra fazer sem experiência)',
+          SUPORTE: '📖 Suporte (Passo a passo fácil de seguir)',
+          LUCRO: '💰 Lucro (Vender ou lucrar rapidinho)',
+          RELAXAMENTO: '🌿 Relaxamento (Hobby relaxante só meu)'
+        };
+        const q6Container = document.getElementById('q6-breakdown-container');
+        q6Container.innerHTML = Object.entries(metrics.q6Breakdown || {}).map(([tag, val]) => `
+          <div style="margin-bottom: 12px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600;">
+              <span>${q6Labels[tag] || tag}</span>
+              <span>${val.percentage}% (${val.count} leads)</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" style="width: ${val.percentage}%;"></div>
+            </div>
+          </div>
+        `).join('');
+
+        // 3. Matrix Table
+        const matrixTbody = document.getElementById('matrix-tbody');
+        const pTitles = {
+          REF: '🌿 A do Refúgio',
+          REND: '💸 A Empreendedora',
+          PRES: '🎁 A Presenteadora',
+          DEC: '🏡 A Decoradora'
+        };
+
+        matrixTbody.innerHTML = ['REF', 'REND', 'PRES', 'DEC'].map(p => {
+          const row = metrics.crossMatrix[p] || { FACILIDADE: 0, SUPORTE: 0, LUCRO: 0, RELAXAMENTO: 0 };
+          const rowTotal = row.FACILIDADE + row.SUPORTE + row.LUCRO + row.RELAXAMENTO;
+          return `
+            <tr>
+              <td><strong>${pTitles[p]}</strong></td>
+              <td>${row.FACILIDADE}</td>
+              <td>${row.SUPORTE}</td>
+              <td>${row.LUCRO}</td>
+              <td>${row.RELAXAMENTO}</td>
+              <td><strong>${rowTotal}</strong></td>
+            </tr>
+          `;
+        }).join('');
+
+        // 4. Leads Table
+        const leadsTbody = document.getElementById('leads-tbody');
+        if (leads.length === 0) {
+          leadsTbody.innerHTML = `<tr><td colspan="11" style="text-align: center; color: #888; padding: 24px;">Nenhum lead capturado ainda. Faça um teste no quiz!</td></tr>`;
+        } else {
+          leadsTbody.innerHTML = leads.map(l => `
+            <tr>
+              <td>#${l.id}</td>
+              <td><strong>${l.nome}</strong></td>
+              <td>${l.contato}</td>
+              <td>${l.tipo_contato === 'whatsapp' ? '💬 WhatsApp' : '✉️ E-mail'}</td>
+              <td><span class="badge badge-${(l.perfil || '').toLowerCase()}">${l.perfil}</span></td>
+              <td><span style="font-weight: 600; color: #983F28;">${l.kit_escolhido || 'Padrão'}</span></td>
+              <td><strong>${l.valor_pago || '-'}</strong></td>
+              <td><strong>${l.q6_tag || '-'}</strong></td>
+              <td>${l.q1_tag || l.q3_tag || '-'}</td>
+              <td>${l.utm_source || '<span style="color:#aaa;">direto</span>'}</td>
+              <td style="font-size: 0.8rem; color: #888;">${l.created_at}</td>
+            </tr>
+          `).join('');
+        }
+
+      } catch (err) {
+        console.error('Erro ao carregar dados do admin', err);
+      }
+    }
+
+    loadAdminData();
+  </script>
+</body>
+</html>
