@@ -158,6 +158,7 @@ button, a, input, select, textarea, .answer-card, .carousel-slide {
 }
 
 /* Auto margin para centralizar cards curtos graciosamente sem risco de corte */
+.intro-lovable-container,
 .intro-card-new-palette,
 .question-card,
 .calculating-card,
@@ -478,6 +479,305 @@ button, a, input, select, textarea, .answer-card, .carousel-slide {
   width: 100%;
   max-width: 480px;
   transition: var(--transition);
+}
+
+/* ==========================================================================
+   Página Inicial Estilo Lovable (bordado-russo.lovable.app)
+   Paleta Harmoniosa Rosa & Branco
+   ========================================================================== */
+.intro-lovable-container {
+  max-width: 580px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* 1. Topo & Headline */
+.intro-lovable-header {
+  margin-bottom: 22px;
+}
+
+.intro-lovable-eyebrow {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8E5A78;
+  margin-bottom: 12px;
+}
+
+.intro-lovable-title {
+  margin: 0 0 18px;
+}
+
+.intro-lovable-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 2.1rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  padding: 8px 24px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(236, 72, 153, 0.35);
+}
+
+@media (min-width: 480px) {
+  .intro-lovable-badge {
+    font-size: 2.6rem;
+    padding: 10px 28px;
+  }
+}
+
+.intro-lovable-description {
+  font-size: 1.05rem;
+  line-height: 1.68;
+  color: #4A1535;
+  margin: 0 auto;
+  max-width: 540px;
+}
+
+.intro-lovable-description b {
+  color: #4A1535;
+  font-weight: 700;
+}
+
+.highlight-profit {
+  color: #059669;
+  font-weight: 800;
+}
+
+/* 2. Hero Image Card (9:16) */
+.intro-lovable-hero-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 20px;
+}
+
+.intro-lovable-hero-card {
+  width: 100%;
+  max-width: 380px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 18px 45px rgba(236, 72, 153, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 4px solid #FFFFFF;
+  background: #FFF;
+}
+
+.intro-lovable-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* 3. Textos de Apoio */
+.intro-lovable-text-box {
+  margin-bottom: 22px;
+  max-width: 520px;
+}
+
+.intro-lovable-promise {
+  font-size: 1.02rem;
+  color: #4A1535;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.intro-lovable-call {
+  font-size: 0.94rem;
+  color: #BE185D;
+  font-weight: 600;
+}
+
+/* 4. CTA Pulse Button */
+.intro-lovable-cta-wrapper {
+  width: 100%;
+  margin-bottom: 36px;
+}
+
+.btn-lovable-pulse {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  color: #FFFFFF;
+  font-family: var(--font-sans);
+  font-size: 1.15rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 20px 28px;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.45);
+  animation: pulseCtaLovable 2s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  touch-action: manipulation;
+}
+
+.btn-lovable-pulse:hover {
+  transform: scale(1.02);
+  box-shadow: 0 14px 38px rgba(236, 72, 153, 0.55);
+}
+
+.btn-lovable-pulse:active {
+  transform: scale(0.98);
+}
+
+@keyframes pulseCtaLovable {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 10px 30px rgba(236, 72, 153, 0.45);
+  }
+  50% {
+    transform: scale(1.025);
+    box-shadow: 0 14px 40px rgba(236, 72, 153, 0.65);
+  }
+}
+
+/* 5. Seção de Avaliações / Depoimentos */
+.intro-lovable-social-proof {
+  width: 100%;
+  margin-top: 10px;
+}
+
+.intro-lovable-stars {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: #F59E0B;
+  font-size: 1.35rem;
+  margin-bottom: 10px;
+}
+
+.intro-lovable-social-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8E5A78;
+  margin-bottom: 18px;
+}
+
+.intro-lovable-testimonial-card {
+  background: #FFFFFF;
+  border-radius: 24px;
+  padding: 24px 20px 18px;
+  border: 1px solid rgba(236, 72, 153, 0.18);
+  box-shadow: 0 12px 32px rgba(236, 72, 153, 0.08);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.testimonial-avatar-wrapper {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3.5px solid #FCE7F3;
+  box-shadow: 0 4px 14px rgba(236, 72, 153, 0.25);
+  margin-bottom: 12px;
+  background: #FDF2F8;
+}
+
+.testimonial-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.testimonial-name {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #4A1535;
+  margin: 0 0 2px;
+}
+
+.testimonial-handle {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #BE185D;
+  margin: 0 0 12px;
+}
+
+.testimonial-quote {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #5C2445;
+  font-style: italic;
+  margin: 0 0 16px;
+  max-width: 420px;
+}
+
+/* Controles de Navegação do Depoimento */
+.testimonial-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid rgba(236, 72, 153, 0.12);
+  padding-top: 14px;
+}
+
+.testimonial-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #FDF2F8;
+  color: #BE185D;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  touch-action: manipulation;
+}
+
+.testimonial-nav-btn:hover {
+  background: #FCE7F3;
+  color: #9D174D;
+  transform: scale(1.08);
+}
+
+.testimonial-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.testimonial-dot {
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  border-radius: 4px;
+  background: rgba(236, 72, 153, 0.25);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.testimonial-dot.active {
+  width: 22px;
+  background: #EC4899;
+}
   display: inline-flex;
   align-items: center;
   justify-content: center;
