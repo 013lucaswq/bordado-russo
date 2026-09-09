@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Componente: UpgradeModal
  * Pop-up inteligente de Upgrade para o Kit Completo por R$ 27,90
  */
@@ -56,13 +56,13 @@ const UpgradeModal = {
         </div>
 
         <div class="upgrade-actions">
-          <button type="button" class="btn btn-primary btn-large btn-upgrade-accept" id="btn-accept-upgrade">
+          <a href="${(window.salesData && window.salesData.upgradePopup && window.salesData.upgradePopup.checkoutUrl) ? window.salesData.upgradePopup.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR'}" class="btn btn-primary btn-large btn-upgrade-accept" id="btn-accept-upgrade">
             <span>✨ Sim! Quero o Kit Completo por R$ 27,90</span>
-          </button>
+          </a>
           
-          <button type="button" class="btn-upgrade-decline" id="btn-keep-basic">
+          <a href="${(window.salesData && window.salesData.offers && window.salesData.offers.basico && window.salesData.offers.basico.checkoutUrl) ? window.salesData.offers.basico.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=L55LJDK'}" class="btn-upgrade-decline" id="btn-keep-basic">
             Não, obrigado. Prefiro continuar com o Kit Básico por R$ 19,90 →
-          </button>
+          </a>
         </div>
       </div>
     `;
@@ -87,13 +87,15 @@ const UpgradeModal = {
     });
 
     // Aceitar upgrade por R$ 27,90
-    modalEl.querySelector('#btn-accept-upgrade').addEventListener('click', () => {
+    modalEl.querySelector('#btn-accept-upgrade').addEventListener('click', (e) => {
+      e.preventDefault();
       closeModal();
       onAcceptUpgrade();
     });
 
     // Manter básico por R$ 19,90
-    modalEl.querySelector('#btn-keep-basic').addEventListener('click', () => {
+    modalEl.querySelector('#btn-keep-basic').addEventListener('click', (e) => {
+      e.preventDefault();
       closeModal();
       onKeepBasic();
     });

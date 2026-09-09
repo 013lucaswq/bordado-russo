@@ -35,17 +35,9 @@ const PostQuizOffer = {
             <p class="result-qualify-subtitle">
               Você foi qualificada para participar do treinamento de <span class="highlight-bordado-russo">BORDADO RUSSO</span>
             </p>
-
-            <div class="result-badge-pill">
-              <span class="badge-icon">🧵</span>
-              <span>${profileData.badge}</span>
-            </div>
-            <h2 class="result-title">${profileData.title}</h2>
           </div>
 
           <div class="result-body">
-            <!-- Primeiro texto curto e direto (sem texto de apoio secundário) -->
-            <p class="result-description-short">${profileData.description}</p>
             
             <!-- Carrossel Interativo Pequeno: O que você vai conseguir criar com facilidade -->
             <div class="result-gallery-carousel-box">
@@ -231,9 +223,9 @@ const PostQuizOffer = {
               </ul>
 
               <div class="pricing-cta-box">
-                <button type="button" class="btn btn-primary btn-large btn-buy-completo" id="btn-buy-completo">
+                <a href="${offers.completo.checkoutUrl}" class="btn btn-primary btn-large btn-buy-completo" id="btn-buy-completo">
                   <span>✨ ${offers.completo.ctaText}</span>
-                </button>
+                </a>
 
                 <!-- Aviso de escassez abaixo do CTA da oferta completa -->
                 <div class="vagas-scarcity-notice">
@@ -372,7 +364,8 @@ const PostQuizOffer = {
     // Ação: Clicar no Kit Básico -> Disparar Pop-up de Upgrade por R$ 27,90
     const btnBasico = container.querySelector('#btn-buy-basico');
     if (btnBasico) {
-      btnBasico.addEventListener('click', () => {
+      btnBasico.addEventListener('click', (e) => {
+        e.preventDefault();
         window.UpgradeModal.render(
           document.body,
           // Aceitou Upgrade para o Completo por R$ 27,90
@@ -381,7 +374,8 @@ const PostQuizOffer = {
               kitId: 'upgrade_completo',
               kitName: 'Kit Completo (Upgrade Exclusivo)',
               price: 'R$ 27,90',
-              priceNumber: 27.90
+              priceNumber: 27.90,
+              checkoutUrl: (window.salesData && window.salesData.upgradePopup) ? window.salesData.upgradePopup.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR'
             });
           },
           // Preferiu continuar no Básico por R$ 19,90
@@ -390,7 +384,8 @@ const PostQuizOffer = {
               kitId: 'kit_basico',
               kitName: 'Kit Básico',
               price: 'R$ 19,90',
-              priceNumber: 19.90
+              priceNumber: 19.90,
+              checkoutUrl: offers.basico.checkoutUrl
             });
           }
         );
@@ -400,12 +395,14 @@ const PostQuizOffer = {
     // Ação: Clicar direto no Kit Completo por R$ 37,90
     const btnCompleto = container.querySelector('#btn-buy-completo');
     if (btnCompleto) {
-      btnCompleto.addEventListener('click', () => {
+      btnCompleto.addEventListener('click', (e) => {
+        e.preventDefault();
         onSelectOffer({
           kitId: 'kit_completo',
           kitName: 'Kit Completo',
           price: 'R$ 37,90',
-          priceNumber: 37.90
+          priceNumber: 37.90,
+          checkoutUrl: offers.completo.checkoutUrl
         });
       });
     }

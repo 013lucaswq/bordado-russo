@@ -156,7 +156,83 @@ document.addEventListener('DOMContentLoaded', () => {
               price: selectedOffer.price
             });
 
-            // Abrir Modal de Checkout para captura ágil e segura
+            // Redirecionamento direto para o Checkout da Wiven com parâmetros UTM
+            if (selectedOffer.checkoutUrl) {
+              // 1. Meta Pixel InitiateCheckout
+              if (typeof window.fbq === 'function') {
+                try {
+                  window.fbq('track', 'InitiateCheckout', {
+                    content_name: selectedOffer.kitName,
+                    value: selectedOffer.priceNumber || 0,
+                    currency: 'BRL'
+                  });
+                } catch (e) {}
+              }
+
+              // 2. Preservar UTMs e parâmetros da URL atual
+              let targetUrl = selectedOffer.checkoutUrl;
+              try {
+                const u = new URL(selectedOffer.checkoutUrl);
+                const s = new URLSearchParams(window.location.search);
+                s.forEach((v, k) => {
+                  if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+                });
+                targetUrl = u.toString();
+              } catch (e) {}
+
+              // 3. Gravar dados das respostas do quiz silenciosamente em background
+              try {
+                const trackingParams = (window.quizStorage && window.quizStorage.getTrackingParams) ? window.quizStorage.getTrackingParams() : {};
+                const payload = {
+                  nome: 'Checkout Wiven',
+                  contato: 'Wiven Checkout',
+                  tipo_contato: 'checkout',
+                  perfil: state.profile,
+                  kit_escolhido: selectedOffer.kitName,
+                  valor_pago: selectedOffer.price,
+                  q1_resposta: state.answers[1] ? state.answers[1].text : '',
+                  q1_tag: state.answers[1] ? state.answers[1].tag : '',
+                  q2_resposta: state.answers[2] ? state.answers[2].text : '',
+                  q2_tag: state.answers[2] ? state.answers[2].tag : '',
+                  q3_resposta: state.answers[3] ? state.answers[3].text : '',
+                  q3_tag: state.answers[3] ? state.answers[3].tag : '',
+                  q4_resposta: state.answers[4] ? state.answers[4].text : '',
+                  q4_tag: state.answers[4] ? state.answers[4].tag : '',
+                  q5_resposta: state.answers[5] ? state.answers[5].text : '',
+                  q5_tag: state.answers[5] ? state.answers[5].tag : '',
+                  q6_resposta: state.answers[6] ? state.answers[6].text : '',
+                  q6_tag: state.answers[6] ? state.answers[6].tag : '',
+                  ref_score: state.scores ? state.scores.REF : 0,
+                  rend_score: state.scores ? state.scores.REND : 0,
+                  pres_score: state.scores ? state.scores.PRES : 0,
+                  dec_score: state.scores ? state.scores.DEC : 0,
+                  consentimento: true,
+                  origem: trackingParams.origem || 'quiz',
+                  campanha: trackingParams.campanha || '',
+                  utm_source: trackingParams.utm_source || '',
+                  utm_medium: trackingParams.utm_medium || '',
+                  utm_campaign: trackingParams.utm_campaign || '',
+                  utm_content: trackingParams.utm_content || '',
+                  referrer: trackingParams.referrer || document.referrer || ''
+                };
+                if (navigator.sendBeacon) {
+                  navigator.sendBeacon('/api/leads', new Blob([JSON.stringify(payload)], { type: 'application/json' }));
+                } else {
+                  fetch('/api/leads', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload),
+                    keepalive: true
+                  }).catch(() => {});
+                }
+              } catch (e) {}
+
+              // 4. Redirecionar para o Checkout da Wiven
+              window.location.href = targetUrl;
+              return;
+            }
+
+            // Abrir Modal de Checkout para captura ágil e segura (Fallback)
             window.CheckoutModal.render(document.body, selectedOffer, async (orderData) => {
               state.lead = {
                 name: orderData.name,

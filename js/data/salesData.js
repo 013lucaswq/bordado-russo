@@ -121,19 +121,19 @@ const salesData = {
         icon: "🎥",
         badge: "GRÁTIS",
         title: "Vídeo Aulas Passo a Passo",
-        description: "Aprenda visualmente o manuseio correto da agulha de punch needle, o ponto em relevo perfeito, a tensão ideal dos fios e como finalizar com verso limpo e profissional."
+        description: "Aprenda visualmente o manuseio correto da agulha de punch needle, e como fazer o bordado russo"
       },
       {
         icon: "💰",
         badge: "GRÁTIS",
         title: "Guia Prático de Vendas",
-        description: "O método simples para precificar suas peças sem ter prejuízo, tirar fotos encantadoras com seu celular e conquistar suas primeiras clientes pelas redes sociais e WhatsApp."
+        description: "O método simples para precificar suas peças sem ter prejuízo"
       },
       {
         icon: "🤝",
         badge: "GRÁTIS",
         title: "Comunidade de Artesanato",
-        description: "Um grupo acolhedor e exclusivo para tirar dúvidas, trocar ideias de fios e cores, comemorar suas primeiras peças e se inspirar todos os dias ao lado de outras bordadeiras."
+        description: "Um grupo acolhedor e exclusivo para tirar dúvidas, trocar ideias de fios e cores entre bordadeiras"
       }
     ]
   },
@@ -147,6 +147,7 @@ const salesData = {
       priceFrom: "R$ 57,90",
       priceTo: "R$ 19,90",
       priceNumber: 19.90,
+      checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=L55LJDK",
       period: "pagamento único • acesso anual",
       features: [
         "+750 Riscos de Bordado Russo em alta definição",
@@ -165,6 +166,7 @@ const salesData = {
       priceFrom: "R$ 129,90",
       priceTo: "R$ 37,90",
       priceNumber: 37.90,
+      checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=792LAMX",
       period: "pagamento único • acesso vitalício",
       features: [
         "+2.000 Riscos para Bordado Russo organizados por categorias",
@@ -190,6 +192,7 @@ const salesData = {
     originalOfferPrice: "R$ 37,90",
     upgradePrice: "R$ 27,90",
     priceDifference: "apenas R$ 8 a mais que o básico",
+    checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR",
     benefits: [
       "+2.000 Riscos em vez de apenas 750",
       "Acesso Vitalício em vez de 1 ano",

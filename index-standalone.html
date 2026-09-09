@@ -4355,19 +4355,19 @@ const salesData = {
         icon: "🎥",
         badge: "GRÁTIS",
         title: "Vídeo Aulas Passo a Passo",
-        description: "Aprenda visualmente o manuseio correto da agulha de punch needle, o ponto em relevo perfeito, a tensão ideal dos fios e como finalizar com verso limpo e profissional."
+        description: "Aprenda visualmente o manuseio correto da agulha de punch needle, e como fazer o bordado russo"
       },
       {
         icon: "💰",
         badge: "GRÁTIS",
         title: "Guia Prático de Vendas",
-        description: "O método simples para precificar suas peças sem ter prejuízo, tirar fotos encantadoras com seu celular e conquistar suas primeiras clientes pelas redes sociais e WhatsApp."
+        description: "O método simples para precificar suas peças sem ter prejuízo"
       },
       {
         icon: "🤝",
         badge: "GRÁTIS",
         title: "Comunidade de Artesanato",
-        description: "Um grupo acolhedor e exclusivo para tirar dúvidas, trocar ideias de fios e cores, comemorar suas primeiras peças e se inspirar todos os dias ao lado de outras bordadeiras."
+        description: "Um grupo acolhedor e exclusivo para tirar dúvidas, trocar ideias de fios e cores entre bordadeiras"
       }
     ]
   },
@@ -4381,6 +4381,7 @@ const salesData = {
       priceFrom: "R$ 57,90",
       priceTo: "R$ 19,90",
       priceNumber: 19.90,
+      checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=L55LJDK",
       period: "pagamento único • acesso anual",
       features: [
         "+750 Riscos de Bordado Russo em alta definição",
@@ -4399,6 +4400,7 @@ const salesData = {
       priceFrom: "R$ 129,90",
       priceTo: "R$ 37,90",
       priceNumber: 37.90,
+      checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=792LAMX",
       period: "pagamento único • acesso vitalício",
       features: [
         "+2.000 Riscos para Bordado Russo organizados por categorias",
@@ -4424,6 +4426,7 @@ const salesData = {
     originalOfferPrice: "R$ 37,90",
     upgradePrice: "R$ 27,90",
     priceDifference: "apenas R$ 8 a mais que o básico",
+    checkoutUrl: "https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR",
     benefits: [
       "+2.000 Riscos em vez de apenas 750",
       "Acesso Vitalício em vez de 1 ano",
@@ -4935,15 +4938,15 @@ const QuizIntro = {
         <!-- 1. Headline Superior -->
         <div class="intro-lovable-header">
           <p class="intro-lovable-eyebrow">
-            A maior tendência do artesanato para 2026:
+            A maior tendência do artesanato para acalmar e relaxar o corpo e a mente em 2026:
           </p>
           
-          <h1 class="intro-lovable-title">
+          <h1 class="intro-lovable-title" aria-label="Bordado Russo é a maior tendência do artesanato para acalmar e relaxar o corpo e a mente em 2026">
             <span class="intro-lovable-badge">BORDADO RUSSO</span>
           </h1>
 
           <p class="intro-lovable-description">
-            Descubra um jeito <b>simples, barato</b> e <b>lucrativo</b> pra você começar a ganhar até <b class="highlight-profit">R$&nbsp;3.240,00 por mês de casa</b> fazendo peças lindas de <b>bordado russo</b>, mesmo que nunca tenha feito nada parecido antes.
+            Descubra um jeito simples, <b>barato e fácil</b> de começar a fazer peças lindas de bordado russo de casa, mesmo que nunca tenha feito nada parecido antes, <b>relaxe seu corpo e sua mente</b> e ganhe até <b class="highlight-profit">R$3.420,00 por mês</b> começando ainda hoje
           </p>
         </div>
 
@@ -5699,7 +5702,7 @@ if (typeof window !== 'undefined') {
   window.ProfileResult = ProfileResult;
 }
 
-  ﻿/**
+  /**
  * Componente: UpgradeModal
  * Pop-up inteligente de Upgrade para o Kit Completo por R$ 27,90
  */
@@ -5757,13 +5760,13 @@ const UpgradeModal = {
         </div>
 
         <div class="upgrade-actions">
-          <button type="button" class="btn btn-primary btn-large btn-upgrade-accept" id="btn-accept-upgrade">
+          <a href="${(window.salesData && window.salesData.upgradePopup && window.salesData.upgradePopup.checkoutUrl) ? window.salesData.upgradePopup.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR'}" class="btn btn-primary btn-large btn-upgrade-accept" id="btn-accept-upgrade">
             <span>✨ Sim! Quero o Kit Completo por R$ 27,90</span>
-          </button>
+          </a>
           
-          <button type="button" class="btn-upgrade-decline" id="btn-keep-basic">
+          <a href="${(window.salesData && window.salesData.offers && window.salesData.offers.basico && window.salesData.offers.basico.checkoutUrl) ? window.salesData.offers.basico.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=L55LJDK'}" class="btn-upgrade-decline" id="btn-keep-basic">
             Não, obrigado. Prefiro continuar com o Kit Básico por R$ 19,90 →
-          </button>
+          </a>
         </div>
       </div>
     `;
@@ -5788,13 +5791,15 @@ const UpgradeModal = {
     });
 
     // Aceitar upgrade por R$ 27,90
-    modalEl.querySelector('#btn-accept-upgrade').addEventListener('click', () => {
+    modalEl.querySelector('#btn-accept-upgrade').addEventListener('click', (e) => {
+      e.preventDefault();
       closeModal();
       onAcceptUpgrade();
     });
 
     // Manter básico por R$ 19,90
-    modalEl.querySelector('#btn-keep-basic').addEventListener('click', () => {
+    modalEl.querySelector('#btn-keep-basic').addEventListener('click', (e) => {
+      e.preventDefault();
       closeModal();
       onKeepBasic();
     });
@@ -6023,17 +6028,9 @@ const PostQuizOffer = {
             <p class="result-qualify-subtitle">
               Você foi qualificada para participar do treinamento de <span class="highlight-bordado-russo">BORDADO RUSSO</span>
             </p>
-
-            <div class="result-badge-pill">
-              <span class="badge-icon">🧵</span>
-              <span>${profileData.badge}</span>
-            </div>
-            <h2 class="result-title">${profileData.title}</h2>
           </div>
 
           <div class="result-body">
-            <!-- Primeiro texto curto e direto (sem texto de apoio secundário) -->
-            <p class="result-description-short">${profileData.description}</p>
             
             <!-- Carrossel Interativo Pequeno: O que você vai conseguir criar com facilidade -->
             <div class="result-gallery-carousel-box">
@@ -6219,9 +6216,9 @@ const PostQuizOffer = {
               </ul>
 
               <div class="pricing-cta-box">
-                <button type="button" class="btn btn-primary btn-large btn-buy-completo" id="btn-buy-completo">
+                <a href="${offers.completo.checkoutUrl}" class="btn btn-primary btn-large btn-buy-completo" id="btn-buy-completo">
                   <span>✨ ${offers.completo.ctaText}</span>
-                </button>
+                </a>
 
                 <!-- Aviso de escassez abaixo do CTA da oferta completa -->
                 <div class="vagas-scarcity-notice">
@@ -6360,7 +6357,8 @@ const PostQuizOffer = {
     // Ação: Clicar no Kit Básico -> Disparar Pop-up de Upgrade por R$ 27,90
     const btnBasico = container.querySelector('#btn-buy-basico');
     if (btnBasico) {
-      btnBasico.addEventListener('click', () => {
+      btnBasico.addEventListener('click', (e) => {
+        e.preventDefault();
         window.UpgradeModal.render(
           document.body,
           // Aceitou Upgrade para o Completo por R$ 27,90
@@ -6369,7 +6367,8 @@ const PostQuizOffer = {
               kitId: 'upgrade_completo',
               kitName: 'Kit Completo (Upgrade Exclusivo)',
               price: 'R$ 27,90',
-              priceNumber: 27.90
+              priceNumber: 27.90,
+              checkoutUrl: (window.salesData && window.salesData.upgradePopup) ? window.salesData.upgradePopup.checkoutUrl : 'https://checkout.wiven.com.br/checkout/cmts2lneu0cc701pxtsli00dr?offer=7VG29WR'
             });
           },
           // Preferiu continuar no Básico por R$ 19,90
@@ -6378,7 +6377,8 @@ const PostQuizOffer = {
               kitId: 'kit_basico',
               kitName: 'Kit Básico',
               price: 'R$ 19,90',
-              priceNumber: 19.90
+              priceNumber: 19.90,
+              checkoutUrl: offers.basico.checkoutUrl
             });
           }
         );
@@ -6388,12 +6388,14 @@ const PostQuizOffer = {
     // Ação: Clicar direto no Kit Completo por R$ 37,90
     const btnCompleto = container.querySelector('#btn-buy-completo');
     if (btnCompleto) {
-      btnCompleto.addEventListener('click', () => {
+      btnCompleto.addEventListener('click', (e) => {
+        e.preventDefault();
         onSelectOffer({
           kitId: 'kit_completo',
           kitName: 'Kit Completo',
           price: 'R$ 37,90',
-          priceNumber: 37.90
+          priceNumber: 37.90,
+          checkoutUrl: offers.completo.checkoutUrl
         });
       });
     }
@@ -6707,6 +6709,69 @@ document.addEventListener('DOMContentLoaded', () => {
               kit_name: selectedOffer.kitName,
               price: selectedOffer.price
             });
+
+            if (selectedOffer.checkoutUrl) {
+              if (typeof window.fbq === 'function') {
+                try {
+                  window.fbq('track', 'InitiateCheckout', {
+                    content_name: selectedOffer.kitName,
+                    value: selectedOffer.priceNumber || 0,
+                    currency: 'BRL'
+                  });
+                } catch (e) {}
+              }
+
+              let targetUrl = selectedOffer.checkoutUrl;
+              try {
+                const u = new URL(selectedOffer.checkoutUrl);
+                const s = new URLSearchParams(window.location.search);
+                s.forEach((v, k) => {
+                  if (!u.searchParams.has(k)) u.searchParams.set(k, v);
+                });
+                targetUrl = u.toString();
+              } catch (e) {}
+
+              // Salvar respostas offline no standalone
+              try {
+                const trackingParams = (window.quizStorage && window.quizStorage.getTrackingParams) ? window.quizStorage.getTrackingParams() : {};
+                const payload = {
+                  nome: 'Checkout Wiven',
+                  contato: 'Wiven Checkout',
+                  tipo_contato: 'checkout',
+                  perfil: state.profile,
+                  kit_escolhido: selectedOffer.kitName,
+                  valor_pago: selectedOffer.price,
+                  q1_resposta: state.answers[1] ? state.answers[1].text : '',
+                  q1_tag: state.answers[1] ? state.answers[1].tag : '',
+                  q2_resposta: state.answers[2] ? state.answers[2].text : '',
+                  q2_tag: state.answers[2] ? state.answers[2].tag : '',
+                  q3_resposta: state.answers[3] ? state.answers[3].text : '',
+                  q3_tag: state.answers[3] ? state.answers[3].tag : '',
+                  q4_resposta: state.answers[4] ? state.answers[4].text : '',
+                  q4_tag: state.answers[4] ? state.answers[4].tag : '',
+                  q5_resposta: state.answers[5] ? state.answers[5].text : '',
+                  q5_tag: state.answers[5] ? state.answers[5].tag : '',
+                  q6_resposta: state.answers[6] ? state.answers[6].text : '',
+                  q6_tag: state.answers[6] ? state.answers[6].tag : '',
+                  ref_score: state.scores ? state.scores.REF : 0,
+                  rend_score: state.scores ? state.scores.REND : 0,
+                  pres_score: state.scores ? state.scores.PRES : 0,
+                  dec_score: state.scores ? state.scores.DEC : 0,
+                  consentimento: true,
+                  origem: trackingParams.origem || 'quiz',
+                  campanha: trackingParams.campanha || '',
+                  utm_source: trackingParams.utm_source || '',
+                  utm_medium: trackingParams.utm_medium || '',
+                  utm_campaign: trackingParams.utm_campaign || '',
+                  utm_content: trackingParams.utm_content || '',
+                  referrer: trackingParams.referrer || document.referrer || ''
+                };
+                saveLeadOffline(payload);
+              } catch (e) {}
+
+              window.location.href = targetUrl;
+              return;
+            }
 
             window.CheckoutModal.render(document.body, selectedOffer, async (orderData) => {
               state.lead = {

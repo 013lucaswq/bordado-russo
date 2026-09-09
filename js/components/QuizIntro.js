@@ -33,15 +33,15 @@ const QuizIntro = {
         <!-- 1. Headline Superior -->
         <div class="intro-lovable-header">
           <p class="intro-lovable-eyebrow">
-            A maior tendência do artesanato para 2026:
+            A maior tendência do artesanato para acalmar e relaxar o corpo e a mente em 2026:
           </p>
           
-          <h1 class="intro-lovable-title">
+          <h1 class="intro-lovable-title" aria-label="Bordado Russo é a maior tendência do artesanato para acalmar e relaxar o corpo e a mente em 2026">
             <span class="intro-lovable-badge">BORDADO RUSSO</span>
           </h1>
 
           <p class="intro-lovable-description">
-            Descubra um jeito <b>simples, barato</b> e <b>lucrativo</b> pra você começar a ganhar até <b class="highlight-profit">R$&nbsp;3.240,00 por mês de casa</b> fazendo peças lindas de <b>bordado russo</b>, mesmo que nunca tenha feito nada parecido antes.
+            Descubra um jeito simples, <b>barato e fácil</b> de começar a fazer peças lindas de bordado russo de casa, mesmo que nunca tenha feito nada parecido antes, <b>relaxe seu corpo e sua mente</b> e ganhe até <b class="highlight-profit">R$3.420,00 por mês</b> começando ainda hoje
           </p>
         </div>
 
