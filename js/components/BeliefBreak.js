@@ -36,7 +36,7 @@ const BeliefBreak = {
         <div class="belief-mockup-wrapper">
           <div class="belief-mockup-frame-9-16">
             <img 
-              src="/assets/images/quebra-crenca-sereia-9-16.jpg" 
+              src="/assets/images/quebra-crenca-sereia-9-16.webp" 
               alt="Peça de bordado russo com caneta mágica feita em poucas horas" 
               class="belief-mockup-img" 
               loading="lazy"

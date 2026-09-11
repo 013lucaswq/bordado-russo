@@ -23,7 +23,7 @@ const BeliefBreak2 = {
         <div class="belief-mockup-wrapper">
           <div class="belief-mockup-frame-16-9 belief-mockup-shopee">
             <img 
-              src="/assets/images/quebra-crenca-material.jpg" 
+              src="/assets/images/quebra-crenca-material.webp" 
               alt="Kit de Bordado Russo na Shopee por R$21,37" 
               class="belief-mockup-img" 
               loading="lazy"

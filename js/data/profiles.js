@@ -9,17 +9,17 @@ const profiles = {
     emotionalMicrocopy: "Esse resultado diz muito sobre a forma como você se conecta com o bordado. 💛",
     images: [
       {
-        src: "/assets/images/ref/ref-1.jpg",
+        src: "/assets/images/ref/ref-1.webp",
         alt: "Textura macia e acolhedora de bordado russo",
         caption: "Texturas fofas e volumosas para relaxar"
       },
       {
-        src: "/assets/images/ref/ref-2.jpg",
+        src: "/assets/images/ref/ref-2.webp",
         alt: "Mãos bordando ponto a ponto com agulha mágica",
         caption: "Um momento só seu a cada ponto"
       },
       {
-        src: "/assets/images/ref/ref-3.jpg",
+        src: "/assets/images/ref/ref-3.webp",
         alt: "Ambiente aconchegante com tons naturais e fios",
         caption: "Criações suaves que trazem paz"
       }
@@ -37,17 +37,17 @@ const profiles = {
     emotionalMicrocopy: "Esse resultado diz muito sobre a forma como você se conecta com o bordado. 💛",
     images: [
       {
-        src: "/assets/images/rend/rend-1.jpg",
+        src: "/assets/images/rend/rend-1.webp",
         alt: "Peça finalizada de bordado russo com acabamento comercial",
         caption: "Peças de alto valor percebido e procura"
       },
       {
-        src: "/assets/images/rend/rend-2.jpg",
+        src: "/assets/images/rend/rend-2.webp",
         alt: "Detalhes de relevo tridimensional em bastidor",
         caption: "Textura 3D exclusiva que encanta clientes"
       },
       {
-        src: "/assets/images/rend/rend-3.jpg",
+        src: "/assets/images/rend/rend-3.webp",
         alt: "Mostruário artesanal pronto para encomendas",
         caption: "Criatividade transformada em renda real"
       }
@@ -65,17 +65,17 @@ const profiles = {
     emotionalMicrocopy: "Esse resultado diz muito sobre a forma como você se conecta com o bordado. 💛",
     images: [
       {
-        src: "/assets/images/pres/pres-1.jpg",
+        src: "/assets/images/pres/pres-1.webp",
         alt: "Bastidor delicado pronto para presentear",
         caption: "Lembranças inesquecíveis feitas ponto a ponto"
       },
       {
-        src: "/assets/images/pres/pres-2.jpg",
+        src: "/assets/images/pres/pres-2.webp",
         alt: "Mimo personalizado em bordado russo",
         caption: "Detalhes delicados que emocionam quem recebe"
       },
       {
-        src: "/assets/images/pres/pres-3.jpg",
+        src: "/assets/images/pres/pres-3.webp",
         alt: "Carinho artesanal e fofura em cada laçada",
         caption: "Presentes únicos com afeto verdadeiro"
       }
@@ -93,17 +93,17 @@ const profiles = {
     emotionalMicrocopy: "Esse resultado diz muito sobre a forma como você se conecta com o bordado. 💛",
     images: [
       {
-        src: "/assets/images/dec/dec-1.jpg",
+        src: "/assets/images/dec/dec-1.webp",
         alt: "Almofada e quadro decorativo de bordado russo",
         caption: "Seu lar decorado com sua própria arte"
       },
       {
-        src: "/assets/images/dec/dec-2.jpg",
+        src: "/assets/images/dec/dec-2.webp",
         alt: "Composição de parede com bastidores de punch needle",
         caption: "Efeito tridimensional e aconchegante"
       },
       {
-        src: "/assets/images/dec/dec-3.jpg",
+        src: "/assets/images/dec/dec-3.webp",
         alt: "Cantinho acolhedor com peças feitas à mão",
         caption: "Design artesanal que transforma ambientes"
       }

@@ -30,25 +30,72 @@ document.addEventListener('DOMContentLoaded', () => {
     questionIndex: state.questionIndex
   }));
 
+  // Code Splitting / Lazy Loading de Chunks
+  const loadedChunks = {};
+  function loadChunk(name) {
+    if (loadedChunks[name]) return loadedChunks[name];
+    if (name === 'quiz-flow' && window.QuizQuestion && window.questionsData) {
+      return (loadedChunks[name] = Promise.resolve());
+    }
+    if (name === 'offer-flow' && window.PostQuizOffer && window.salesData) {
+      return (loadedChunks[name] = Promise.resolve());
+    }
+    loadedChunks[name] = new Promise((resolve, reject) => {
+      const existing = document.querySelector(`script[src*="${name}"]`);
+      if (existing) {
+        existing.addEventListener('load', () => resolve());
+        existing.addEventListener('error', reject);
+        return;
+      }
+      const script = document.createElement('script');
+      script.src = `/js/${name}.min.js`;
+      script.async = true;
+      script.onload = () => resolve();
+      script.onerror = (err) => {
+        console.error(`Erro ao carregar chunk ${name}:`, err);
+        reject(err);
+      };
+      document.head.appendChild(script);
+    });
+    return loadedChunks[name];
+  }
+  window.loadChunk = loadChunk;
+
   function persist() {
     window.quizStorage.saveState(state);
   }
 
-  function render() {
+  async function render() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Garantir carregamento assíncrono dos chunks da etapa atual
+    if (['question', 'calculating', 'belief_break', 'belief_break_2'].includes(state.step)) {
+      if (!window.QuizQuestion || !window.questionsData) {
+        await loadChunk('quiz-flow');
+      }
+    } else if (['result', 'preview'].includes(state.step)) {
+      if (!window.PostQuizOffer || !window.salesData) {
+        await loadChunk('offer-flow');
+      }
+    }
 
     switch (state.step) {
       case 'intro':
-        window.QuizIntro.render(container, () => {
+        window.QuizIntro.render(container, async () => {
           state.step = 'question';
           state.questionIndex = 0;
           persist();
           window.quizAnalytics.track('quiz_started');
+          await loadChunk('quiz-flow');
           render();
         });
         break;
 
       case 'question': {
+        // Pré-carregar silenciosamente a oferta enquanto o usuário responde
+        if (state.questionIndex >= 3) {
+          loadChunk('offer-flow');
+        }
         const question = window.questionsData[state.questionIndex];
         const selectedAnswer = state.answers[question.number];
 

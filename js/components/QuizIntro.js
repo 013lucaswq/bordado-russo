@@ -10,19 +10,19 @@ const QuizIntro = {
       {
         name: "Juliana Nascimento",
         handle: "@jujuuu.nasc08",
-        image: "/assets/images/depoimentos/depoimento-camila.jpg",
+        image: "/assets/images/depoimentos/thumb-camila.webp",
         text: "Eu sempre quis fazer artesanato, mas achava tudo muito difícil, até conhecer o bordado russo. Além de ser uma delícia fazer isso, é muito fácil, e ainda por cima, as peças ficam simplesmente LINDAS! Estou amando!!!"
       },
       {
         name: "Camila Almeida",
         handle: "@cami_almeidaa",
-        image: "/assets/images/depoimentos/depoimento-patricia.jpg",
+        image: "/assets/images/depoimentos/thumb-patricia.webp",
         text: "Eu estava procurando algo pra fazer uma renda extra que fosse de baixo investimento. Quando conheci o bordado russo, vi o grande potencial. Hoje faço mais de 4 mil reais todos os meses vendendo peças!"
       },
       {
         name: "Débora Melo",
         handle: "@deboramelo_",
-        image: "/assets/images/depoimentos/depoimento-rosangela.jpg",
+        image: "/assets/images/depoimentos/thumb-rosangela.webp",
         text: "Eu amo artesanato, faço de tudo. Porém o bordado russo eu tenho uma paixão maior. As peças são únicas e em 1 hora eu já termino. Amo essa velocidade pra ver o resultado final!"
       }
     ];
@@ -48,16 +48,19 @@ const QuizIntro = {
         <!-- 2. Hero Image Principal -->
         <div class="intro-lovable-hero-wrapper">
           <div class="intro-lovable-hero-card">
-            <img 
-              src="/assets/images/helena-martins-9-16.jpg" 
-              alt="Especialista em Bordado Russo segurando bastidor colorido" 
-              class="intro-lovable-hero-img" 
-              loading="eager"
-              fetchpriority="high"
-              decoding="async"
-              width="571"
-              height="1024"
-            />
+            <picture>
+              <source type="image/webp" srcset="/assets/images/helena-martins-9-16-400w.webp 400w, /assets/images/helena-martins-9-16.webp 571w" sizes="(max-width: 480px) 100vw, 460px">
+              <img 
+                src="/assets/images/helena-martins-9-16.webp" 
+                alt="Especialista em Bordado Russo segurando bastidor colorido" 
+                class="intro-lovable-hero-img" 
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                width="571"
+                height="1024"
+              />
+            </picture>
           </div>
         </div>
 
@@ -124,6 +127,17 @@ const QuizIntro = {
 
     const startBtn = container.querySelector('#btn-start-quiz');
     if (startBtn) {
+      const prefetchQuiz = () => {
+        if (typeof window.loadChunk === 'function') window.loadChunk('quiz-flow');
+      };
+      startBtn.addEventListener('pointerenter', prefetchQuiz, { once: true, passive: true });
+      startBtn.addEventListener('touchstart', prefetchQuiz, { once: true, passive: true });
+      if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(prefetchQuiz, { timeout: 2500 });
+      } else {
+        setTimeout(prefetchQuiz, 1800);
+      }
+
       startBtn.addEventListener('click', () => {
         const section = container.querySelector('.intro-lovable-container');
         if (section) {

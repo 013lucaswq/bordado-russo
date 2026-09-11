@@ -24,27 +24,27 @@ const salesData = {
 
   creationPieces: [
     {
-      src: "/assets/images/facilidade/facilidade-1-necessaire.jpg",
+      src: "/assets/images/facilidade/facilidade-1-necessaire.webp",
       alt: "Necessaire artesanal em bordado russo floral com relevo macio",
       caption: "Necessaires e bolsas florais com textura macia"
     },
     {
-      src: "/assets/images/facilidade/facilidade-2-paisagem-sol.jpg",
+      src: "/assets/images/facilidade/facilidade-2-paisagem-sol.webp",
       alt: "Bastidor decorativo de paisagem com sol e colinas em relevo 3D",
       caption: "Quadros e bastidores de paisagens aconchegantes"
     },
     {
-      src: "/assets/images/facilidade/facilidade-3-bastidor-floral.jpg",
+      src: "/assets/images/facilidade/facilidade-3-bastidor-floral.webp",
       alt: "Bastidor clássico de flores volumosas em tons suaves",
       caption: "Composições florais delicadas e volumosas"
     },
     {
-      src: "/assets/images/facilidade/facilidade-4-conjunto-mimos.jpg",
+      src: "/assets/images/facilidade/facilidade-4-conjunto-mimos.webp",
       alt: "Conjunto de mimos, chaveiro de coração, porta-copos e cestinha",
       caption: "Mimos rápidos: porta-copos, chaveiros e lembrancinhas"
     },
     {
-      src: "/assets/images/facilidade/facilidade-5-almofada-flores.jpg",
+      src: "/assets/images/facilidade/facilidade-5-almofada-flores.webp",
       alt: "Almofada decorativa de bordado russo floral de alto valor",
       caption: "Almofadas decorativas volumosas de alto valor"
     }
@@ -55,31 +55,31 @@ const salesData = {
       id: 1,
       name: "Patrícia A.",
       city: "São Paulo, SP",
-      image: "/assets/images/depoimentos/depoimento-patricia.jpg"
+      image: "/assets/images/depoimentos/depoimento-patricia.webp"
     },
     {
       id: 2,
       name: "Rosângela S.",
       city: "Curitiba, PR",
-      image: "/assets/images/depoimentos/depoimento-rosangela.jpg"
+      image: "/assets/images/depoimentos/depoimento-rosangela.webp"
     },
     {
       id: 3,
       name: "Camila F.",
       city: "Belo Horizonte, MG",
-      image: "/assets/images/depoimentos/depoimento-camila.jpg"
+      image: "/assets/images/depoimentos/depoimento-camila.webp"
     },
     {
       id: 4,
       name: "Tereza M.",
       city: "Rio de Janeiro, RJ",
-      image: "/assets/images/depoimentos/depoimento-tereza.jpg"
+      image: "/assets/images/depoimentos/depoimento-tereza.webp"
     },
     {
       id: 5,
       name: "Aparecida N.",
       city: "Porto Alegre, RS",
-      image: "/assets/images/depoimentos/depoimento-aparecida.jpg"
+      image: "/assets/images/depoimentos/depoimento-aparecida.webp"
     }
   ],
   studentReviews: [
